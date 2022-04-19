@@ -1,28 +1,31 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-export const siteTitle = 'Ravenwolfe'
+import { Box } from "@mui/material";
 
-export default function Layout({ children, home }) {
-    return (
-        <>
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <meta
-                    name="description"
-                    content="Learn how to build a personal website using Next.js"
-                />
-                <meta
-                    property="og:image"
-                    content={`https://og-image.vercel.app/${encodeURI(
-                        siteTitle
-                    )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-                />
-                <meta name="og:title" content={siteTitle} />
-                <meta name="twitter:card" content="summary_large_image" />
-            </Head>
-            <main>
-                {children}
-            </main>
-        </>
-    );
-};
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+
+const siteTitle = "Ravenwolfe";
+
+export default function Layout(props) {
+  const children = props.children;
+
+  return (
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <title>{siteTitle}</title>
+        <meta
+          name="description"
+          content="Ravenwolfe Senior Consulting Services"
+        />
+        <meta name="og:title" content={siteTitle} />
+      </Head>
+      <NavBar />
+      <Box component="main" sx={{ backgroundColor: "#e6dcc3" }}>
+        {children}
+      </Box>
+      <Footer />
+    </>
+  );
+}
